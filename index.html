@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZenThink - Belajar dengan Ketenangan Pikiran</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #3A5A40;
+            --secondary: #588157;
+            --accent: #A3B18A;
+            --light: #F8F9FA;
+            --dark: #1A1A1A;
+            --text: #333333;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text);
+            background-color: var(--light);
+            overflow-x: hidden;
+        }
+        
+        /* Typography */
+        .display-font {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        /* Navigation */
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+            padding: 15px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar.scrolled {
+            padding: 10px 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.8rem;
+        }
+        
+        .nav-link {
+            font-weight: 500;
+            margin: 0 10px;
+            position: relative;
+        }
+        
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover:after,
+        .nav-link.active:after {
+            width: 100%;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 120px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        /* Carousel */
+        .carousel-item {
+            height: 500px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .carousel-caption {
+            background-color: rgba(0,0,0,0.6);
+            border-radius: 15px;
+            padding: 30px;
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            max-width: 800px;
+        }
+        
+        /* Cards */
+        .card-custom {
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            margin-bottom: 30px;
+            height: 100%;
+        }
+        
+        .card-custom:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        /* Services */
+        .services {
+            padding: 100px 0;
+            background-color: white;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 100px 0;
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .testimonial-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+        
+        /* Buttons */
+        .btn-zen {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-zen:hover {
+            background-color: var(--secondary);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(58, 90, 64, 0.3);
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .carousel-item {
+                height: 400px;
+            }
+            
+            .carousel-caption {
+                width: 90%;
+                padding: 20px;
+                bottom: 50px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home">
+                <span style="color: var(--primary)">Zen</span><span style="color: var(--dark)">Think</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#home">Beranda</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">Tentang</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#services">Layanan</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#courses">Kursus</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#testimonials">Testimoni</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Kontak</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Carousel -->
+    <section id="home">
+        <div id="mainCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80')">
+                    <div class="carousel-caption">
+                        <h1 class="display-font">Belajar dengan Ketenangan Pikiran</h1>
+                        <p class="lead">ZenThink menghadirkan metode pembelajaran yang menggabungkan pendidikan modern dengan teknik mindfulness.</p>
+                        <a href="#services" class="btn btn-light btn-lg me-2">Jelajahi Layanan</a>
+                        <a href="#" class="btn btn-outline-light btn-lg" data-bs-toggle="modal" data-bs-target="#registerModal">Daftar Sekarang</a>
+                    </div>
+                </div>
+                <div class="carousel-item" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80')">
+                    <div class="carousel-caption">
+                        <h1 class="display-font">Tingkatkan Fokus Belajar Anda</h1>
+                        <p class="lead">Raih potensi maksimal dalam belajar dengan teknik mindfulness yang terbukti efektif.</p>
+                        <a href="#courses" class="btn btn-light btn-lg me-2">Lihat Kursus</a>
+                        <a href="#" class="btn btn-outline-light btn-lg">Pelajari Metode</a>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#mainCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#mainCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-font mb-3">Layanan Kami</h2>
+                <p class="lead text-muted">Solusi pembelajaran holistik untuk hasil yang lebih baik</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="card-custom text-center p-4">
+                        <div class="feature-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3 class="h4">Teknik Mindfulness</h3>
+                        <p>Pengajaran teknik mindfulness khusus untuk meningkatkan fokus belajar.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card-custom text-center p-4">
+                        <div class="feature-icon">
+                            <i class="fas fa-book-open"></i>
+                        </div>
+                        <h3 class="h4">Kursus Premium</h3>
+                        <p>Materi pembelajaran yang dirancang khusus dengan pendekatan mindfulness.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card-custom text-center p-4">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3 class="h4">Pelacakan Kemajuan</h3>
+                        <p>Sistem monitoring perkembangan belajar yang komprehensif.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card-custom text-center p-4">
+                        <div class="feature-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3 class="h4">Komunitas Pembelajar</h3>
+                        <p>Komunitas eksklusif untuk berbagi pengetahuan dan pengalaman.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section class="py-5 bg-light" id="courses">
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <h2 class="display-font mb-3">Kursus Terpopuler</h2>
+                <p class="lead text-muted">Pilih kursus yang sesuai dengan kebutuhan Anda</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="card-custom">
+                        <img src="https://images.unsplash.com/photo-1542621334-a254cf47733d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" class="card-img-top" alt="Mindful Learning">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between mb-3">
+                                <span class="badge bg-success">Bestseller</span>
+                                <span class="text-muted"><i class="far fa-clock me-1"></i> 8 minggu</span>
+                            </div>
+                            <h4 class="card-title">Mindful Learning Dasar</h4>
+                            <p class="card-text">Pelajari teknik dasar mindfulness untuk meningkatkan fokus belajar Anda.</p>
+                            <div class="d-flex justify-content-between align-items-center mt-4">
+                                <h5 class="mb-0 text-primary">Rp 249.000</h5>
+                                <a href="#" class="btn btn-zen">Daftar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card-custom">
+                        <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" class="card-img-top" alt="Advanced Mindfulness">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between mb-3">
+                                <span class="badge bg-primary">Terbaru</span>
+                                <span class="text-muted"><i class="far fa-clock me-1"></i> 12 minggu</span>
+                            </div>
+                            <h4 class="card-title">Advanced Mindfulness</h4>
+                            <p class="card-text">Teknik lanjutan mindfulness untuk produktivitas maksimal dalam belajar.</p>
+                            <div class="d-flex justify-content-between align-items-center mt-4">
+                                <h5 class="mb-0 text-primary">Rp 399.000</h5>
+                                <a href="#" class="btn btn-zen">Daftar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card-custom">
+                        <img src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1471&q=80" class="card-img-top" alt="Focus Mastery">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between mb-3">
+                                <span class="badge bg-warning text-dark">Populer</span>
+                                <span class="text-muted"><i class="far fa-clock me-1"></i> 6 minggu</span>
+                            </div>
+                            <h4 class="card-title">Mastering Focus</h4>
+                            <p class="card-text">Teknik teruji untuk menguasai fokus dan konsentrasi dalam belajar.</p>
+                            <div class="d-flex justify-content-between align-items-center mt-4">
+                                <h5 class="mb-0 text-primary">Rp 299.000</h5>
+                                <a href="#" class="btn btn-zen">Daftar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>`
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-font mb-3 text-white">Apa Kata Mereka</h2>
+                <p class="lead text-white-50">Testimoni dari para pengguna ZenThink</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="d-flex align-items-center mb-4">
+                            <img src="WhatsApp Image 2025-06-04 at 11.27.30_1fffa777.jpg" class="rounded-circle me-3" width="60" alt="Testimoni">
+                            <div>
+                                <h5 class="mb-0 text-white">M.Albanin</h5>
+                                <p class="text-white-50 mb-0">Mahasiswa</p>
+                            </div>
+                        </div>
+                        <p class="mb-0">"Sejak menggunakan metode ZenThink, konsentrasi belajar saya meningkat drastis. Nilai kuliah saya jadi lebih baik!"</p>
+                        <div class="mt-3 text-warning">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="d-flex align-items-center mb-4">
+                            <img src="WhatsApp Image messi.jpg" class="rounded-circle me-3" width="60" alt="Testimoni">
+                            <div>
+                                <h5 class="mb-0 text-white">Leo Messi</h5>
+                                <p class="text-white-50 mb-0">Profesional</p>
+                            </div>
+                        </div>
+                        <p class="mb-0">"Teknik mindfulness dari ZenThink sangat membantu saya belajar hal baru dengan lebih cepat meskipun sibuk bekerja."</p>
+                        <div class="mt-3 text-warning">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="d-flex align-items-center mb-4">
+                            <img src="WhatsApp Image song min.jpg" class="rounded-circle me-3" width="60" alt="Testimoni">
+                            <div>
+                                <h5 class="mb-0 text-white">Baek Song</h5>
+                                <p class="text-white-50 mb-0">Guru</p>
+                            </div>
+                        </div>
+                        <p class="mb-0">"Sekarang saya mengajarkan teknik ZenThink ke murid-murid saya dan hasil belajar mereka meningkat pesat."</p>
+                        <div class="mt-3 text-warning">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="py-5" id="contact">
+        <div class="container py-5">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <h2 class="display-font mb-4">Hubungi Kami</h2>
+                    <p class="mb-4">Punya pertanyaan tentang ZenThink? Tim kami siap membantu Anda.</p>
+                    <div class="d-flex mb-3">
+                        <i class="fas fa-map-marker-alt text-primary me-3 mt-1"></i>
+                        <p>Jl. Pendidikan No. 123, Indonesia</p>
+                    </div>
+                    <div class="d-flex mb-3">
+                        <i class="fas fa-phone-alt text-primary me-3 mt-1"></i>
+                        <p>+62 8217 0992 453</p>
+                    </div>
+                    <div class="d-flex mb-3">
+                        <i class="fas fa-envelope text-primary me-3 mt-1"></i>
+                        <p>info@zenthink.id</p>
+                    </div>
+                    <div class="d-flex mt-4">
+                        <a href="#" class="text-decoration-none text-dark me-3"><i class="fab fa-facebook-f fa-lg"></i></a>
+                        <a href="#" class="text-decoration-none text-dark me-3"><i class="fab fa-twitter fa-lg"></i></a>
+                        <a href="#" class="text-decoration-none text-dark me-3"><i class="fab fa-instagram fa-lg"></i></a>
+                        <a href="#" class="text-decoration-none text-dark"><i class="fab fa-linkedin-in fa-lg"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body p-5">
+                            <h3 class="h4 mb-4">Kirim Pesan</h3>
+                            <form>
+                                <div class="mb-3">
+                                    <input type="text" class="form-control" placeholder="Nama Lengkap" required>
+                                </div>
+                                <div class="mb-3">
+                                    <input type="email" class="form-control" placeholder="Email" required>
+                                </div>
+                                <div class="mb-3">
+                                    <input type="text" class="form-control" placeholder="Subjek">
+                                </div>
+                                <div class="mb-3">
+                                    <textarea class="form-control" rows="4" placeholder="Pesan Anda" required></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-zen w-100">Kirim Pesan</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <h3 class="h4 mb-4">ZenThink</h3>
+                    <p>Platform edukasi dengan pendekatan mindfulness untuk membantu Anda belajar dengan lebih fokus, tenang, dan efektif.</p>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+                    <h4 class="h5 mb-4">Menu</h4>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#home" class="text-white-50 text-decoration-none">Beranda</a></li>
+                        <li class="mb-2"><a href="#services" class="text-white-50 text-decoration-none">Layanan</a></li>
+                        <li class="mb-2"><a href="#courses" class="text-white-50 text-decoration-none">Kursus</a></li>
+                        <li class="mb-2"><a href="#testimonials" class="text-white-50 text-decoration-none">Testimoni</a></li>
+                        <li><a href="#contact" class="text-white-50 text-decoration-none">Kontak</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+                    <h4 class="h5 mb-4">Legal</h4>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Syarat & Ketentuan</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Kebijakan Privasi</a></li>
+                        <li><a href="#" class="text-white-50 text-decoration-none">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h4 class="h5 mb-4">Langganan Newsletter</h4>
+                    <p class="text-white-50 mb-3">Dapatkan tips belajar dan penawaran khusus langsung ke email Anda.</p>
+                    <form>
+                        <div class="input-group mb-3">
+                            <input type="email" class="form-control" placeholder="Email Anda" required>
+                            <button class="btn btn-primary" type="submit">Gabung</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <hr class="my-5 bg-secondary">
+            <div class="text-center">
+                <p class="mb-0">&copy; 2025 ZenThink. M.Albanin (1224034).</p>
+            </div>
+        </div>
+    </footer>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
